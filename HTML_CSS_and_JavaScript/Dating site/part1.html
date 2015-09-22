@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dating online</title>
+  <meta name="author" content="Aleksander Gębicki">
+  <meta charset="UTF-8">
+  <meta name="keywords" content="dating, online, meet">
+</head>
+
+<body>
+
+<h1>Please Enter Your Details For Our Dating Website!</h1>
+<form method="post" enctype="multipart/form-data" 
+      action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+
+
+<fieldset>
+<legend>Your Face</legend>
+<label for="filename">Your image:</label>
+<input type="file" name="filename" required><br>
+<label for="custImg">Image preview:</label>
+<img src="" id="preview" name="custImg">
+</fieldset>
+
+<fieldset>
+<legend>Your General Details</legend>
+
+<label for="fullName">Name:</label>
+<input type="text" name="fullName" placeholder="Your full name" required><br>
+
+<label for="gender">Gender:</label>
+<input type="radio" name="gender" value="M" required>Male</input>
+<input type="radio" name="gender" value="F" required>Female</input>
+<br>
+
+<label for="age">Age:</label>
+<input type="number" min="0" max="140" step="1" value="18" name="age" required><br>
+
+<label for="birthDate">Date of birth:</label>
+<input type="date" name="birthDate"><br>
+
+<label for="favColor">Favorite color:</label>
+<input type="color" name="favColor"><br>
+
+<label for="cities">Which country:</label>
+<select name="cities">
+		<option value="no">no selection</option>
+		<option value="gb">Great Britain</option>
+		<option value="pl">Poland</option>		
+		<option value="sw">Sweden</option>
+		<option value="jp">Japan</option>
+		<option value="sp">Spain</option>
+	</select>
+
+</fieldset>
+
+<fieldset>
+<legend>Your Indicators</legend>
+<label for="height">Height:</label>
+Short<input type="range" min="0" max="100" step="25" name="height">Tall</input><br>
+<label for="salary">Salary:</label>
+Poor<input type="range" min="0" max="100" step="10">Rich</input>
+
+
+</fieldset>
+
+<fieldset>
+<legend>Your Contact Information</legend>
+<label for="email">Email:</label>
+<input type="email"><br>
+<label for="phone">Mobile:</label>
+<input type="tel" name="phone"><br>
+<label for="address">Address:</label>
+<textarea rows="3" cols="80" name="address">
+</textarea><br>
+<label for="contact">Method to contact you:</label>
+<input type="checkbox" name="contact" value="email">Email</input>
+<input type="checkbox" name="contact" value="whatsapp">Whatsapp</input>
+<input type="checkbox" name="contact" value="in-app">In-app chat</input>
+
+</fieldset>
+
+<input type="submit" value="Submit">
+</form>
+
+
+</body>
+
+</html>
