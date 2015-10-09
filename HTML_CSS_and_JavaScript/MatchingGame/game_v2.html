@@ -48,16 +48,17 @@
       var numberOfFaces = 5;
       var leftPos = 0, topPos = 0; // position of randomly placed face image
       for (var i = 0; i < numberOfFaces; i++) {
-//        alert(i);
+
         topPos = Math.floor(Math.random() * 400);
         leftPos = Math.floor(Math.random() * 400);
-
+//alert(topPos + "  " + leftPos);
         imgNode = document.createElement("IMG");
 
         imgNode.src = "smile.png";
-        imgNode.style.top = topPos;
-        imgNode.style.left = leftPos;
+        imgNode.style.top = topPos + "px";;
+        imgNode.style.left = leftPos + "px";
         theLeftSide.appendChild(imgNode);
+//        imgNode.style.top = 200 + "px";
       }
 
     }
