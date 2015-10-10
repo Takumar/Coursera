@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Matching game by: Aleksander Gębicki</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="author" content="Aleksander Gębicki">
+  <style>
+    h1{
+      font-family:  Georgia, Verdana;
+      color: darkslateblue;
+      padding: 5px;
+    }
+    p {
+      font-family: Georgia, Verdana;
+      color: green;
+      padding: 5px;
+    }
+    img {
+      position: absolute;
+    }
+    #mainDiv {
+      position: absolute;
+      width: 1000px;
+      background-color: lightgrey;
+      border: 2px solid brown;
+    }
+
+    #leftSide {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+    }
+    #rightSide {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      left: 500px;
+      border-left: 1px solid black;
+    }
+  </style>
+
+</head>
+
+<body id="theBody" onload="generateFaces()">
+<div id="mainDiv">
+    <h1>Matching Game</h1>
+    <p id="instruction">Click on the extra smiling face on the left.</p>
+<!--    <button onclick="generateFaces()">Click me</button> -->
+
+  <div id="leftSide">
+<!--
+    <img src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png">
+  -->
+  </div>
+
+  <div id="rightSide">
+
+  </div>
+
+</div> <!-- end of div main -->
+
+
+
+
+<script>
+
+  var theLeftSide = document.getElementById("leftSide");
+  var theRightSide = document.getElementById("rightSide");
+  var theBody = document.getElementsByTagName("body")[0];
+//  var theBody = document.getElementById("theBody");
+  var theInstruction = document.getElementById("instruction");
+
+  var numberOfFaces = 5;
+  var leftPos = 0, topPos = 0; // position of randomly placed face image
+
+  function generateFaces() {
+    var imgNode;
+
+    for (var i = 0; i < numberOfFaces; i++) {
+      topPos = Math.floor(Math.random() * 400);
+      leftPos = Math.floor(Math.random() * 400);
+
+      imgNode = document.createElement("img");
+
+      imgNode.src = "smile.png";
+      imgNode.style.top = topPos + "px";;
+      imgNode.style.left = leftPos + "px";
+      theLeftSide.appendChild(imgNode);
+    }
+
+    // clone images from left and remove last added face
+    var leftSideImages = theLeftSide.cloneNode(true);
+    leftSideImages.removeChild(leftSideImages.lastChild);
+    theRightSide.appendChild(leftSideImages);
+
+    theLeftSide.lastChild.onclick = function nextLevel(event) {
+        event.stopPropagation();
+        numberOfFaces += 5;
+        deleteChildren(theLeftSide);
+        deleteChildren(theRightSide);
+        generateFaces();
+      };
+    }
+
+    // remove all children of node
+    function deleteChildren(node) {
+      while (node.firstChild)
+        node.removeChild(node.firstChild);
+    }
+
+/*
+    theBody.onclick = function gameOver() {
+      alert("Game Over!");
+
+      theBody.onclick = null;
+      theLeftSide.lastChild.onclick = null;
+    };
+*/
+
+    theBody.onclick = gameOver2;
+    function gameOver2() {
+      theBody.onclick = null;
+      theLeftSide.lastChild.onclick = null;
+
+      var answer = confirm("Game Over!\n\nIf you want to play again press OK.");
+      deleteChildren(theLeftSide);
+      deleteChildren(theRightSide);
+
+      if (answer) {
+        numberOfFaces = 5;
+        theBody.onclick = gameOver2;
+        generateFaces();
+      }
+      else
+        theInstruction.innerHTML = "Reload page to play again!";
+    };
+
+
+
+</script>
+
+</body>
+</html>
