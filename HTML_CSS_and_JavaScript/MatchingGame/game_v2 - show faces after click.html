@@ -47,17 +47,18 @@
       var theLeftSide = document.getElementById("leftSide");
       var numberOfFaces = 5;
       var leftPos = 0, topPos = 0; // position of randomly placed face image
-
       for (var i = 0; i < numberOfFaces; i++) {
+
         topPos = Math.floor(Math.random() * 400);
         leftPos = Math.floor(Math.random() * 400);
-
+//alert(topPos + "  " + leftPos);
         imgNode = document.createElement("IMG");
 
         imgNode.src = "smile.png";
         imgNode.style.top = topPos + "px";;
         imgNode.style.left = leftPos + "px";
         theLeftSide.appendChild(imgNode);
+//        imgNode.style.top = 200 + "px";
       }
 
     }
@@ -65,11 +66,11 @@
   </script>
 </head>
 
-<body onload="generateFaces()">
+<body onload="myFunction()">
 <div id="mainDiv">
     <h1>Matching Game</h1>
     <p>Click on the extra smiling face on the left.</p>
-<!--    <button onclick="generateFaces()">Click me</button> -->
+    <button onclick="generateFaces()">Click me</button>
 
   <div id="leftSide">
 <!--
